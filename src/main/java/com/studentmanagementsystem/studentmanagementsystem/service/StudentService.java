@@ -33,4 +33,24 @@ public class StudentService {
   public void deleteStudent(Long id) {
     studentRepository.deleteById(id);
   }
+
+  public StudentDTO saveStudent(StudentDTO studentDTO) {
+    Student student = StudentTransformer.toEntity(studentDTO);
+    Student savedStudent = studentRepository.save(student);
+    return StudentTransformer.toDTO(savedStudent);
+  }
+
+  public StudentDTO updateStudent(Long id, StudentDTO studentDTO) {
+    Optional<Student> optionalStudent = studentRepository.findById(id);
+    if (optionalStudent.isPresent()) {
+      Student existingStudent = optionalStudent.get();
+      Student student = StudentTransformer.toEntity(studentDTO);
+      student.setCreatedDate(existingStudent.getCreatedDate());
+      student.setId(existingStudent.getId());
+      Student savedStudent = studentRepository.save(student);
+      return StudentTransformer.toDTO(savedStudent);
+    } else {
+      throw new RecordNotFoundException();
+    }
+  }
 }

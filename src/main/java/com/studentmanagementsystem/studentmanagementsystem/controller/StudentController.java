@@ -29,12 +29,12 @@ public class StudentController {
   @PostMapping("/student")
   public StudentDTO saveStudent(@RequestBody StudentDTO studentDTO) {
     log.info("save student");
-    return null;
+    return studentService.saveStudent(studentDTO);
   }
 
   @PatchMapping("/student/{id}")
-  public StudentDTO saveStudent(@PathVariable("id") Long id, @RequestBody StudentDTO studentDTO) {
-    return null;
+  public StudentDTO updateStudent(@PathVariable("id") Long id, @RequestBody StudentDTO studentDTO) {
+    return studentService.updateStudent(id, studentDTO);
   }
 
   @DeleteMapping("/student/{id}")

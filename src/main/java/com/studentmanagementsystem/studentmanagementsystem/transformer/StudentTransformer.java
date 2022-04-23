@@ -27,4 +27,14 @@ public class StudentTransformer {
     students.forEach(student -> studentDTOS.add(toDTO(student)));
     return studentDTOS;
   }
+
+  public static Student toEntity(StudentDTO studentDTO) {
+    Student student = new Student();
+    student.setFirstName(studentDTO.getFirstName());
+    student.setMiddleName(studentDTO.getMiddleName());
+    student.setLastName(studentDTO.getLastName());
+    student.setGender(studentDTO.getGender());
+    student.setUpdatedBy(studentDTO.getUpdatedBy());
+    return student;
+  }
 }
