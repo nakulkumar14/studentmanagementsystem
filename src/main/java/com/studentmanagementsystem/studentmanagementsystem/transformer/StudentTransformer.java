@@ -1,6 +1,8 @@
 package com.studentmanagementsystem.studentmanagementsystem.transformer;
 
+import com.studentmanagementsystem.studentmanagementsystem.entity.Address;
 import com.studentmanagementsystem.studentmanagementsystem.entity.Student;
+import com.studentmanagementsystem.studentmanagementsystem.model.AddressDTO;
 import com.studentmanagementsystem.studentmanagementsystem.model.StudentDTO;
 import lombok.experimental.UtilityClass;
 
@@ -19,6 +21,8 @@ public class StudentTransformer {
     studentDTO.setCreatedDate(student.getCreatedDate());
     studentDTO.setUpdateDate(student.getUpdateDate());
     studentDTO.setUpdatedBy(student.getUpdatedBy());
+
+    studentDTO.setAddressDTO(getAddressDTO(student.getAddress()));
     return studentDTO;
   }
 
@@ -35,6 +39,35 @@ public class StudentTransformer {
     student.setLastName(studentDTO.getLastName());
     student.setGender(studentDTO.getGender());
     student.setUpdatedBy(studentDTO.getUpdatedBy());
+
+    student.setAddress(getAddress(studentDTO.getAddressDTO()));
     return student;
+  }
+
+  private static Address getAddress(AddressDTO addressDTO) {
+    Address address = new Address();
+    address.setAddressLine1(addressDTO.getAddressLine1());
+    address.setAddressLine2(addressDTO.getAddressLine2());
+    address.setCity(addressDTO.getCity());
+    address.setState(addressDTO.getState());
+    address.setPincode(addressDTO.getPincode());
+    address.setCreatedDate(addressDTO.getCreatedDate());
+    address.setUpdateDate(addressDTO.getUpdateDate());
+    address.setUpdatedBy(addressDTO.getUpdatedBy());
+    return address;
+  }
+
+  private static AddressDTO getAddressDTO(Address address) {
+    AddressDTO addressDTO = new AddressDTO();
+    addressDTO.setId(address.getId());
+    addressDTO.setAddressLine1(address.getAddressLine1());
+    addressDTO.setAddressLine2(address.getAddressLine2());
+    addressDTO.setCity(address.getCity());
+    addressDTO.setState(address.getState());
+    addressDTO.setPincode(address.getPincode());
+    addressDTO.setCreatedDate(address.getCreatedDate());
+    addressDTO.setUpdateDate(address.getUpdateDate());
+    addressDTO.setUpdatedBy(address.getUpdatedBy());
+    return addressDTO;
   }
 }

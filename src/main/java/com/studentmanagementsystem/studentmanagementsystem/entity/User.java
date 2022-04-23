@@ -4,10 +4,8 @@ import com.studentmanagementsystem.studentmanagementsystem.enums.Gender;
 import lombok.Data;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @MappedSuperclass
@@ -22,6 +20,14 @@ public class User extends BaseEntity{
   private String lastName;
 
   @Enumerated(EnumType.STRING)
-  @Column(name = "gender")
+  @Column(name = "gender", nullable = false)
   private Gender gender;
+
+  @Temporal(TemporalType.DATE)
+  @Column(name = "dob", nullable = false)
+  private Date dob;
+
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "address_id", referencedColumnName = "id")
+  private Address address;
 }

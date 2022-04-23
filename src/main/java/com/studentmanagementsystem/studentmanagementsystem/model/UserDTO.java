@@ -9,4 +9,5 @@ public abstract class UserDTO extends BaseDTO {
   protected String middleName;
   protected String lastName;
   protected Gender gender;
+  protected AddressDTO addressDTO;
 }
