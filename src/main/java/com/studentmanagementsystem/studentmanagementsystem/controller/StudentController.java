@@ -23,7 +23,7 @@ public class StudentController {
 
   @GetMapping("/student/{id}")
   public StudentDTO getStudent(@PathVariable("id") Long id) {
-    return null;
+    return studentService.getStudent(id);
   }
 
   @PostMapping("/student")
