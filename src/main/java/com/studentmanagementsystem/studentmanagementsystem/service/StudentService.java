@@ -29,4 +29,8 @@ public class StudentService {
     Student student = optionalStudent.orElseThrow(RecordNotFoundException::new);
     return StudentTransformer.toDTO(student);
   }
+
+  public void deleteStudent(Long id) {
+    studentRepository.deleteById(id);
+  }
 }
