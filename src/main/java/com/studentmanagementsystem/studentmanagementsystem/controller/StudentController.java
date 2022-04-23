@@ -1,15 +1,24 @@
 package com.studentmanagementsystem.studentmanagementsystem.controller;
 
 import com.studentmanagementsystem.studentmanagementsystem.model.StudentDTO;
+import com.studentmanagementsystem.studentmanagementsystem.service.StudentService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 public class StudentController {
+
+  @Autowired
+  private StudentService studentService;
+
   @GetMapping("/student")
   public List<StudentDTO> getStudents() {
-    return null;
+    log.info("get all students");
+    return studentService.getStudents();
   }
 
   @GetMapping("/student/{id}")
@@ -19,6 +28,7 @@ public class StudentController {
 
   @PostMapping("/student")
   public StudentDTO saveStudent(@RequestBody StudentDTO studentDTO) {
+    log.info("save student");
     return null;
   }
 
