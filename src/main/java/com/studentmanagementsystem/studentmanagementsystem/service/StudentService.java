@@ -3,6 +3,7 @@ package com.studentmanagementsystem.studentmanagementsystem.service;
 import com.studentmanagementsystem.studentmanagementsystem.entity.Student;
 import com.studentmanagementsystem.studentmanagementsystem.model.StudentDTO;
 import com.studentmanagementsystem.studentmanagementsystem.repository.StudentRepository;
+import com.studentmanagementsystem.studentmanagementsystem.transformer.StudentTransformer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,6 @@ public class StudentService {
 
   public List<StudentDTO> getStudents() {
     List<Student> students = studentRepository.findAll();
-    return null;
+    return StudentTransformer.toDTO(students);
   }
 }

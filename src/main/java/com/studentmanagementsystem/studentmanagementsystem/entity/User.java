@@ -1,12 +1,15 @@
 package com.studentmanagementsystem.studentmanagementsystem.entity;
 
 import com.studentmanagementsystem.studentmanagementsystem.enums.Gender;
+import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.MappedSuperclass;
 
+@Data
 @MappedSuperclass
 public class User extends BaseEntity{
   @Column(name = "firstname", nullable = false)

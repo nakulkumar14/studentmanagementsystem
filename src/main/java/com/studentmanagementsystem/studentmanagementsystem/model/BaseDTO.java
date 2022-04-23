@@ -1,9 +1,12 @@
 package com.studentmanagementsystem.studentmanagementsystem.model;
 
+import lombok.Data;
+
 import java.util.Date;
 
+@Data
 public abstract class BaseDTO {
-  private Date createdDate;
-  private Date updateDate;
-  private String updatedBy;
+  protected Date createdDate;
+  protected Date updateDate;
+  protected String updatedBy;
 }

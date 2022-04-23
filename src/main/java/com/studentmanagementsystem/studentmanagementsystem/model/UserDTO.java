@@ -1,10 +1,12 @@
 package com.studentmanagementsystem.studentmanagementsystem.model;
 
 import com.studentmanagementsystem.studentmanagementsystem.enums.Gender;
+import lombok.Data;
 
-public class UserDTO extends BaseDTO {
-  private String firstName;
-  private String middleName;
-  private String lastName;
-  private Gender gender;
+@Data
+public abstract class UserDTO extends BaseDTO {
+  protected String firstName;
+  protected String middleName;
+  protected String lastName;
+  protected Gender gender;
 }
