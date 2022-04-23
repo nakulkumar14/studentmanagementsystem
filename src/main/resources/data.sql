@@ -1,0 +1,1 @@
+insert into student(id, firstname, middlename, lastname, gender, created_date, updated_date, updated_by) values(1, 'nakul','','kumar','MALE', now(), now(), 'system');
