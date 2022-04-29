@@ -14,31 +14,10 @@ import java.util.Optional;
 
 @Service
 @Slf4j
-public class StudentService {
+public class StudentService implements BaseService<Student>{
 
   @Autowired
   private StudentRepository studentRepository;
-
-  public List<StudentDTO> getStudents() {
-    List<Student> students = studentRepository.findAll();
-    return StudentTransformer.toDTO(students);
-  }
-
-  public StudentDTO getStudent(Long id) {
-    Optional<Student> optionalStudent = studentRepository.findById(id);
-    Student student = optionalStudent.orElseThrow(RecordNotFoundException::new);
-    return StudentTransformer.toDTO(student);
-  }
-
-  public void deleteStudent(Long id) {
-    studentRepository.deleteById(id);
-  }
-
-  public StudentDTO saveStudent(StudentDTO studentDTO) {
-    Student student = StudentTransformer.toEntity(studentDTO);
-    Student savedStudent = studentRepository.save(student);
-    return StudentTransformer.toDTO(savedStudent);
-  }
 
   public StudentDTO updateStudent(Long id, StudentDTO studentDTO) {
     Optional<Student> optionalStudent = studentRepository.findById(id);
@@ -52,5 +31,30 @@ public class StudentService {
     } else {
       throw new RecordNotFoundException();
     }
+  }
+
+  @Override
+  public List<Student> findAll() {
+    return studentRepository.findAll();
+  }
+
+  @Override
+  public Student getById(Long id) {
+    return studentRepository.findById(id).orElseThrow(RecordNotFoundException::new);
+  }
+
+  @Override
+  public Student save(Student student) {
+    return studentRepository.save(student);
+  }
+
+  @Override
+  public Student update(Long id, Student student) {
+    return null;
+  }
+
+  @Override
+  public void delete(Long id) {
+    studentRepository.deleteById(id);
   }
 }
