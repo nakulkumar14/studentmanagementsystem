@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Builder
@@ -21,5 +22,13 @@ public class StudentStandard extends BaseEntity {
   @ManyToOne
   @JoinColumn(name = "standard_id")
   private Standard standard;
+
+  @Temporal(TemporalType.DATE)
+  @Column(name = "fromDate", nullable = false)
+  private Date fromDate;
+
+  @Temporal(TemporalType.DATE)
+  @Column(name = "toDate", nullable = false)
+  private Date toDate;
 }
 
