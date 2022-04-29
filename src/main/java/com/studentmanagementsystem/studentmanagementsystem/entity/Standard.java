@@ -6,12 +6,13 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Builder
-@Table(name = "standard_class")
+@Table(name = "standard")
 @Entity
-public class StandardClass extends BaseEntity{
+public class Standard extends BaseEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
@@ -20,6 +21,9 @@ public class StandardClass extends BaseEntity{
   @Column(name = "section", nullable = false)
   private Section section;
 
-  @OneToMany(mappedBy = "standardClass")
+  @OneToMany(mappedBy = "standard")
   private List<Subject> subjects;
+
+  @OneToMany(mappedBy = "standard")
+  private Set<StudentStandard> studentStandards;
 }

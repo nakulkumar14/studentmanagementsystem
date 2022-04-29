@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
@@ -16,4 +17,7 @@ public class Student extends User {
 
   @Column(name = "roll_no", nullable = false)
   private Long rollNo;
+
+  @OneToMany(mappedBy = "student")
+  private Set<StudentStandard> studentStandards;
 }

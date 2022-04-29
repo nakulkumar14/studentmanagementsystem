@@ -7,17 +7,19 @@ import javax.persistence.*;
 
 @Data
 @Builder
-@Table(name = "subject")
+@Table(name = "student_standard")
 @Entity
-public class Subject extends BaseEntity{
+public class StudentStandard extends BaseEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
-
-  @Column(name = "name", nullable = false)
-  private String name;
+  private Long id;
 
   @ManyToOne
-  @JoinColumn(name = "standard_id", nullable = false)
+  @JoinColumn(name = "student_id")
+  private Student student;
+
+  @ManyToOne
+  @JoinColumn(name = "standard_id")
   private Standard standard;
 }
+
